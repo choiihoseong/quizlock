@@ -1,0 +1,311 @@
+<title>퀴즈락 개인정보처리방침</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+
+<style>
+:root{
+  --paper:#F7F5FB;
+  --card:#FFFFFF;
+  --card-2:#F2EFFA;
+  --ink:#241E3A;
+  --ink-2:#5C5476;
+  --ink-3:#8E86A6;
+  --line:#E4DEF2;
+  --line-2:#D6CDEB;
+  --grape:#5B3FD9;
+  --grape-soft:#EDE8FF;
+  --mint:#0F9D63;
+  --mint-soft:#DEF5EA;
+  --shadow:0 1px 0 var(--line);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#14111C;
+    --card:#1E1929;
+    --card-2:#262036;
+    --ink:#F0ECF8;
+    --ink-2:#ADA5C2;
+    --ink-3:#7E7597;
+    --line:#322A47;
+    --line-2:#3E3457;
+    --grape:#9B85FF;
+    --grape-soft:#2C2350;
+    --mint:#3ED694;
+    --mint-soft:#0F3325;
+    --shadow:0 1px 0 var(--line);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14111C;
+  --card:#1E1929;
+  --card-2:#262036;
+  --ink:#F0ECF8;
+  --ink-2:#ADA5C2;
+  --ink-3:#7E7597;
+  --line:#322A47;
+  --line-2:#3E3457;
+  --grape:#9B85FF;
+  --grape-soft:#2C2350;
+  --mint:#3ED694;
+  --mint-soft:#0F3325;
+  --shadow:0 1px 0 var(--line);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'IBM Plex Sans KR',-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  font-size:16px;
+  line-height:1.75;
+  word-break:keep-all;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{margin:0;line-height:1.4;text-wrap:balance}
+p{margin:0}
+a{color:var(--grape)}
+
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+
+/* ── 머리 ── */
+.top{padding:64px 0 0}
+.mark{
+  width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(150deg,#6B4FE8,#4A2FC0);
+  box-shadow:0 5px 0 color-mix(in srgb,var(--grape) 55%, black);
+}
+.mark svg{width:26px;height:26px;fill:#fff}
+.eyebrow{
+  margin-top:22px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--grape);font-weight:700;
+}
+h1{
+  font-family:'Gowun Batang',serif;font-weight:700;
+  font-size:38px;margin-top:10px;letter-spacing:-.01em;
+}
+.meta{margin-top:12px;font-size:13.5px;color:var(--ink-3)}
+
+/* ── 한 줄 요약 ── */
+.summary{
+  margin:38px 0 0;padding:24px 26px;border-radius:16px;
+  background:var(--mint-soft);
+  border:1px solid color-mix(in srgb,var(--mint) 30%,transparent);
+}
+.summary .st{font-size:19px;font-weight:700;color:var(--mint)}
+.summary p{margin-top:9px;font-size:15px;color:var(--ink-2);line-height:1.7}
+.summary strong{color:var(--ink);font-weight:600}
+
+/* ── 본문 ── */
+main{padding-bottom:80px}
+section{margin-top:52px}
+h2{
+  font-size:20px;letter-spacing:-.01em;
+  padding-bottom:11px;border-bottom:1px solid var(--line);
+  display:flex;align-items:baseline;gap:12px;
+}
+h2 .num{
+  font-family:ui-monospace,'SF Mono',Menlo,monospace;
+  font-size:13px;color:var(--grape);font-weight:700;
+}
+section p{margin-top:15px;color:var(--ink-2)}
+section p strong{color:var(--ink);font-weight:600}
+
+ul{margin:15px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+li{display:grid;grid-template-columns:auto 1fr;gap:11px;align-items:start;color:var(--ink-2)}
+li::before{
+  content:"";width:6px;height:6px;margin-top:11px;border-radius:2px;background:var(--line-2);
+}
+li strong{color:var(--ink);font-weight:600}
+
+.no-list li::before{background:var(--ink-3)}
+
+.tablewrap{overflow-x:auto;margin-top:20px;border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:460px;font-size:14.5px}
+th,td{padding:13px 17px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{
+  background:var(--card-2);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:700;
+}
+tbody tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
+td{color:var(--ink-2)}
+
+.note{
+  margin-top:20px;padding:17px 20px;border-radius:14px;
+  background:var(--card);border:1px solid var(--line);
+  font-size:14px;color:var(--ink-2);
+}
+.note strong{color:var(--ink)}
+
+.platform{margin-top:22px}
+.platform h3{
+  font-size:15px;color:var(--grape);
+  display:flex;align-items:center;gap:8px;
+}
+.platform h3::after{content:"";flex:1;height:1px;background:var(--line)}
+
+.contact{
+  margin-top:18px;padding:20px 22px;border-radius:14px;
+  background:var(--grape-soft);
+  border:1px solid color-mix(in srgb,var(--grape) 26%,transparent);
+}
+.contact p{margin-top:0;color:color-mix(in srgb,var(--grape) 70%, var(--ink))}
+.contact p + p{margin-top:9px}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:26px 0 60px;color:var(--ink-3);font-size:13px;
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;
+}
+
+@media (max-width:520px){
+  .top{padding-top:44px}
+  h1{font-size:30px}
+  section{margin-top:42px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div class="mark" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <path d="M 26 18 H 40 a 11 11 0 1 1 20 0 H 74 a 8 8 0 0 1 8 8 V 40
+                 a 11 11 0 1 0 0 20 V 74 a 8 8 0 0 1 -8 8 H 60 a 11 11 0 1 0 -20 0 H 26
+                 a 8 8 0 0 1 -8 -8 V 26 a 8 8 0 0 1 8 -8 Z"/>
+      </svg>
+    </div>
+    <p class="eyebrow">퀴즈락 · QuizLock</p>
+    <h1>개인정보처리방침</h1>
+    <p class="meta">시행일 2026년 9월 6일 · 최종 수정 2026년 9월 6일</p>
+  </div>
+
+  <main>
+    <section>
+      <h2><span class="num">01</span>수집하지 않는 것</h2>
+      <p>아래 항목을 <strong>수집하지 않습니다.</strong></p>
+      <ul class="no-list">
+        <li><span>이름·생년월일·연락처·이메일 등 <strong>신원을 알 수 있는 정보</strong></span></li>
+        <li><span>위치, 연락처, 사진, 통화·문자 기록</span></li>
+        <li><span>광고 식별자, 기기 고유 식별자</span></li>
+        <li><span>아이가 사용한 앱의 <strong>내용·화면·입력</strong></span></li>
+      </ul>
+      <div class="note">
+        부모가 설정에서 넣는 <strong>아이 이름은 별명으로 충분합니다.</strong>
+        퀴즈에서 아이를 부르는 데만 쓰이고, 이 값 역시 휴대폰을 벗어나지 않습니다.
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">02</span>휴대폰 안에만 저장되는 것</h2>
+      <p>앱이 동작하려면 아래 값이 필요합니다. 모두 기기 내부 저장소에만 있으며
+        어떤 형태로도 외부에 전송되지 않습니다.</p>
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr><th>저장 항목</th><th>쓰이는 곳</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>아이 별명, 나이대</td><td>문제의 난이도와 부르는 말을 정하는 데</td></tr>
+            <tr><td>문제 종류 선택</td><td>어떤 퀴즈를 낼지</td></tr>
+            <tr><td>퀴즈 주기, 작동 시간대</td><td>언제 관문을 열지</td></tr>
+            <tr><td>보호자 잠금 번호</td><td>아이가 지켜보기를 끄지 못하게</td></tr>
+            <tr><td>오늘 푼 문제와 정답 여부</td><td>보호자에게 보여 주는 기록</td></tr>
+            <tr><td>모은 별과 사용한 별</td><td>보상과 관문 건너뛰기</td></tr>
+            <tr><td>잠글 앱 목록</td><td>시간이 됐을 때 무엇을 잠글지</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">
+        <strong>보관 기간이 따로 없습니다.</strong> 앱을 삭제하면 위 값이 모두 즉시 사라집니다.
+        별도의 파기 요청 절차가 필요 없는 구조입니다.
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">03</span>권한을 요구하는 이유</h2>
+      <p>퀴즈락은 <strong>정해진 시간에 끼어드는 앱</strong>이라 몇 가지 권한이 필요합니다.
+        각 권한이 왜 필요한지, 무엇에 쓰이지 <em>않는지</em>까지 밝힙니다.</p>
+
+      <div class="platform">
+        <h3>안드로이드</h3>
+        <ul>
+          <li><span><strong>다른 앱 위에 표시</strong> — 시간이 됐을 때 아이가 쓰던 화면 위로 퀴즈를 띄웁니다.
+            퀴즈를 풀면 즉시 사라집니다. 광고 표시나 화면 내용 수집에는 쓰지 않습니다.</span></li>
+          <li><span><strong>알림</strong> — 남은 시간을 화면 맨 위에 계속 보여 줍니다.</span></li>
+          <li><span><strong>배터리 최적화 제외</strong> — 이것이 없으면 타이머가 중간에 멈춥니다.</span></li>
+          <li><span><strong>사용 정보 접근 (선택)</strong> — 보호자 기록의 &lsquo;오늘 사용 시간&rsquo;을 채우는 데만 씁니다.
+            집계는 전적으로 기기 안에서 이루어지며 전송하지 않습니다.
+            <strong>허용하지 않아도 모든 핵심 기능이 정상 동작합니다.</strong></span></li>
+        </ul>
+      </div>
+
+      <div class="platform">
+        <h3>iOS</h3>
+        <ul>
+          <li><span><strong>알림 · 실시간 현황</strong> — 남은 시간을 잠금화면과 다이내믹 아일랜드에 보여 줍니다.</span></li>
+          <li><span><strong>스크린 타임 (Family Controls)</strong> — 시간이 됐을 때 앱을 잠급니다.
+            iOS는 프라이버시 보호를 위해 <strong>어떤 앱을 골랐는지 앱에게 알려주지 않으며</strong>,
+            저희도 알 수 없습니다.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">04</span>제3자 제공 · 광고 · 분석</h2>
+      <p><strong>현재 버전에는 없습니다.</strong> 광고 SDK, 분석 SDK, 크래시 리포팅을 포함해
+        어떤 제3자 라이브러리도 넣지 않았습니다. 수집하는 정보가 없으므로
+        판매하거나 공유할 데이터 자체가 없습니다.</p>
+      <p>앱은 실행에 필요한 글꼴을 <strong>앱 안에 함께 담고 있어</strong>
+        평소 동작에 외부 통신이 발생하지 않습니다.</p>
+      <p>뒤에 광고나 결제처럼 외부와 통신하는 기능이 들어가면
+        <strong>이 문서를 먼저 고치고 앱 안에서도 알린 뒤</strong> 적용합니다.
+        그때 어떤 정보가 어디로 가는지 이 자리에 적겠습니다.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">05</span>아동의 개인정보</h2>
+      <p>퀴즈락은 <strong>보호자가 설정하고 아이가 사용하는</strong> 앱입니다.
+        아동에게서 개인정보를 수집하지 않습니다. 현재 버전에서 아이가 접하는 화면에는
+        계정 가입·로그인·결제·외부 링크·채팅·광고가 없습니다.</p>
+      <p>보호자 설정 화면은 잠금 번호로 보호되며, 지켜보기를 끄려면 그 번호가 필요합니다.</p>
+    </section>
+
+    <section>
+      <h2><span class="num">06</span>이용자의 권리</h2>
+      <p>수집하는 정보가 없으므로 열람·정정·삭제를 요청할 대상도 없습니다.
+        기기에 저장된 값은 언제든 <strong>보호자가 직접</strong> 다룰 수 있습니다.</p>
+      <ul>
+        <li><span><strong>수정</strong> — 부모 설정에서 모든 값을 바꿀 수 있습니다.</span></li>
+        <li><span><strong>삭제</strong> — 앱을 삭제하면 저장된 모든 값이 즉시 사라집니다.</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2><span class="num">07</span>문의</h2>
+      <p>이 방침이나 앱에 대한 문의는 아래로 보내 주세요.</p>
+      <div class="contact">
+        <p><strong>문의 이메일 —</strong>
+          <a href="mailto:choii951202@gmail.com">choii951202@gmail.com</a></p>
+        <p>스토어 등록 정보의 <strong>개발자 연락처</strong>로도 연락하실 수 있습니다.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">08</span>방침의 변경</h2>
+      <p>방침이 바뀌면 이 문서와 앱 스토어 등록 정보를 함께 갱신하고,
+        문서 위쪽의 <strong>최종 수정일</strong>을 고칩니다.
+        수집 항목이 늘어나는 변경이라면 앱 안에서도 별도로 알립니다.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>퀴즈락 · QuizLock</span>
+    <span>시행일 2026년 9월 6일</span>
+  </footer>
+</div>

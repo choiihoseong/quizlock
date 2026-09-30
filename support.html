@@ -1,0 +1,265 @@
+<title>퀴즈락 고객지원</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap">
+<style>
+  :root {
+    --paper:#F4F1F9; --card:#FFFFFF; --card-2:#F8F5FD;
+    --ink:#241E3A; --ink-2:#5C5476; --ink-3:#8E86A6;
+    --line:#E4DEF2; --grape:#5B3FD9; --grape-soft:#EDE8FF;
+    --mint:#0F9D63; --mint-soft:#DEF5EA; --mango:#E07C00;
+    --sans:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Malgun Gothic",system-ui,sans-serif;
+    --display:"Jua",var(--sans);
+    --r:18px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:#141119; --card:#1C1826; --card-2:#221D2E;
+      --ink:#EFECF5; --ink-2:#A79FBC; --ink-3:#7C7490;
+      --line:#2F2940; --grape:#A892FF; --grape-soft:#241C3D;
+      --mint:#5FC89A; --mint-soft:#16291F; --mango:#E0AE4E;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:#141119; --card:#1C1826; --card-2:#221D2E;
+    --ink:#EFECF5; --ink-2:#A79FBC; --ink-3:#7C7490;
+    --line:#2F2940; --grape:#A892FF; --grape-soft:#241C3D;
+    --mint:#5FC89A; --mint-soft:#16291F; --mango:#E0AE4E;
+  }
+
+  * { box-sizing:border-box; }
+  body {
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-size:16px; line-height:1.75;
+    -webkit-font-smoothing:antialiased; word-break:keep-all;
+  }
+  .wrap { max-width:680px; margin:0 auto; padding-inline:20px; padding-block:40px 80px; }
+
+  /* 머리 */
+  .brand { display:flex; align-items:center; gap:11px; margin-bottom:26px; }
+  .mark {
+    width:38px; height:38px; flex:none; display:grid; place-items:center; border-radius:12px;
+    background:linear-gradient(145deg,var(--grape),color-mix(in srgb,var(--grape) 66%,var(--mango)));
+    box-shadow:0 3px 10px color-mix(in srgb,var(--grape) 34%,transparent);
+  }
+  .mark svg { width:23px; height:23px; display:block; fill:#fff; }
+  .brand b { font-family:var(--display); font-size:25px; font-weight:400; letter-spacing:.01em; }
+
+  h1 {
+    font-family:var(--display); font-weight:400; letter-spacing:-.005em;
+    font-size:clamp(27px,6vw,36px); line-height:1.3; margin:0 0 14px; text-wrap:balance;
+  }
+  .lede { font-size:17px; color:var(--ink-2); margin:0 0 6px; }
+
+  h2 {
+    font-size:19px; font-weight:700; margin:44px 0 14px;
+    letter-spacing:-.01em; text-wrap:balance;
+  }
+  p { margin:0 0 14px; }
+  a { color:var(--grape); text-underline-offset:3px; }
+  a:focus-visible, summary:focus-visible { outline:2px solid var(--grape); outline-offset:3px; border-radius:6px; }
+
+  /* 시작하기 3단계 */
+  .steps { list-style:none; margin:0; padding:0; display:grid; gap:10px; counter-reset:s; }
+  .steps li {
+    background:var(--card); border:1px solid var(--line); border-radius:var(--r);
+    padding:16px 18px 16px 56px; position:relative; counter-increment:s;
+  }
+  .steps li::before {
+    content:counter(s); position:absolute; left:17px; top:16px;
+    width:25px; height:25px; border-radius:9px; display:grid; place-items:center;
+    background:var(--grape); color:#fff; font-family:var(--display); font-size:14px; line-height:1;
+  }
+  .steps b { display:block; font-size:16px; margin-bottom:2px; }
+  .steps span { font-size:14.5px; color:var(--ink-2); }
+
+  /* 자주 묻는 질문 */
+  .faq { display:grid; gap:9px; }
+  details {
+    background:var(--card); border:1px solid var(--line); border-radius:var(--r);
+    overflow:hidden;
+  }
+  summary {
+    cursor:pointer; padding:15px 46px 15px 18px; font-weight:600; font-size:16px;
+    position:relative; list-style:none;
+  }
+  summary::-webkit-details-marker { display:none; }
+  summary::after {
+    content:''; position:absolute; right:19px; top:50%; width:8px; height:8px;
+    border-right:2px solid var(--ink-3); border-bottom:2px solid var(--ink-3);
+    transform:translateY(-70%) rotate(45deg); transition:transform .18s;
+  }
+  details[open] summary::after { transform:translateY(-20%) rotate(-135deg); }
+  details .body { padding:0 18px 17px; color:var(--ink-2); font-size:15.5px; }
+  details .body p:last-child { margin-bottom:0; }
+  details .body b { color:var(--ink); }
+
+  .path {
+    display:inline-block; background:var(--card-2); border:1px solid var(--line);
+    border-radius:8px; padding:1px 8px; font-size:14px; color:var(--ink);
+    font-weight:600; white-space:nowrap;
+  }
+
+  /* 문의 */
+  .contact {
+    margin-top:18px; background:var(--grape-soft); border-radius:var(--r);
+    padding:22px 20px; text-align:center;
+  }
+  .contact .mail {
+    display:inline-block; margin-top:6px; font-size:18px; font-weight:700;
+    color:var(--grape); word-break:break-all;
+  }
+  .contact .sub { font-size:14.5px; color:var(--ink-2); margin:8px 0 0; }
+
+  .safe {
+    display:flex; gap:12px; align-items:flex-start;
+    background:var(--mint-soft); border-radius:var(--r); padding:16px 18px; margin-top:18px;
+  }
+  .safe .ic { font-size:19px; line-height:1.3; }
+  .safe p { margin:0; font-size:15px; color:var(--ink-2); }
+  .safe b { color:var(--ink); }
+
+  footer {
+    margin-top:50px; padding-top:22px; border-top:1px solid var(--line);
+    color:var(--ink-3); font-size:13.5px;
+  }
+  footer a { color:var(--ink-3); }
+  @media (prefers-reduced-motion: reduce) { * { transition:none !important; } }
+</style>
+
+<div class="wrap">
+
+  <div class="brand">
+    <span class="mark" aria-hidden="true">
+      <svg viewBox="0 0 28 28">
+        <path d="M6 4.6h6.1a2.6 2.6 0 0 1 2.6-2.6 2.6 2.6 0 0 1 2.6 2.6H23a1.4 1.4 0 0 1 1.4 1.4v5.4a2.6 2.6 0
+                 0 1 2.6 2.6 2.6 2.6 0 0 1-2.6 2.6V23a1.4 1.4 0 0 1-1.4 1.4h-6.1a2.6 2.6 0 0 0-2.6-2.6
+                 2.6 2.6 0 0 0-2.6 2.6H6A1.4 1.4 0 0 1 4.6 23v-6.1A2.6 2.6 0 0 1 2 14.3a2.6 2.6 0 0 1 2.6-2.6V6
+                 A1.4 1.4 0 0 1 6 4.6Z"/>
+      </svg>
+    </span>
+    <b>퀴즈락</b>
+  </div>
+
+  <h1>무엇을 도와드릴까요?</h1>
+  <p class="lede">
+    설정하다 막히시면 아래를 먼저 봐 주세요.
+    찾는 내용이 없으면 메일 주시면 됩니다. 직접 읽고 답장드립니다.
+  </p>
+
+  <h2>처음 설정하기</h2>
+  <ol class="steps">
+    <li>
+      <b>권한 세 가지를 허용해 주세요</b>
+      <span>알림 · 실시간 현황 · 스크린 타임. 특히 <b>스크린 타임 권한</b>이 없으면 퀴즈가 뜨지 않아요.</span>
+    </li>
+    <li>
+      <b>예외로 둘 앱을 고르세요 (선택)</b>
+      <span>시간이 되면 <b>휴대폰 전체가 잠깁니다.</b> 전화처럼 늘 열어둘 앱이 있으면
+        <span class="path">설정 › 항상 쓸 수 있게 둘 앱</span> 에서 빼 두세요.</span>
+    </li>
+    <li>
+      <b>홈에서 시작하기를 누르세요</b>
+      <span>이때부터 시간을 셉니다. 시간이 되면 쓰던 화면 위로 잠금이 올라오고,
+        「퀴즈 풀러 가기」를 누르면 퀴즈가 나와요.</span>
+    </li>
+  </ol>
+
+  <h2>자주 묻는 질문</h2>
+  <div class="faq">
+
+    <details>
+      <summary>잠금 번호를 잊어버렸어요</summary>
+      <div class="body">
+        <p>번호를 넣는 화면에서 <b>「번호를 잊으셨나요?」</b>를 누르면 두 자리 곱셈 문제가 나옵니다.
+           맞히면 번호를 새로 정할 수 있어요.</p>
+        <p>아이가 답을 외워 버리지 않도록 <b>매번 다른 문제</b>가 나옵니다.
+           계정이 없는 앱이라 메일로 번호를 찾아드릴 수는 없어요.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>시간이 지났는데 퀴즈가 안 떠요</summary>
+      <div class="body">
+        <p>세 가지를 차례로 확인해 주세요.</p>
+        <p><b>1. 스크린 타임 권한</b> — <span class="path">설정 › 권한</span> 에서 「허용됨」인지 봅니다.
+           아이폰 설정 › 스크린 타임에서 꺼져 있어도 동작하지 않아요.</p>
+        <p><b>2. 지켜보기가 켜져 있는지</b> — 홈에서 「시작하기」를 눌러야 시간을 세기 시작합니다.</p>
+        <p><b>3. 작동 시간대</b> — <span class="path">설정 › 언제까지</span> 가 지금 시각을 포함하는지 봅니다.
+           기본값은 오전 8시–오후 8시예요.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>퀴즈가 너무 자주 나와요 / 너무 뜸해요</summary>
+      <div class="body">
+        <p><span class="path">설정 › 나오는 주기</span> 에서 3분·5분·10분·15분 중에 고르시면 됩니다.</p>
+        <p>한 관문에 낼 문제 수도 1~3개로 바꿀 수 있어요.
+           처음에는 <b>짧은 주기 + 한 문제</b>로 시작해서 아이가 익숙해지면 늘리시는 편이 편합니다.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>아이가 문제를 어려워해요</summary>
+      <div class="body">
+        <p><span class="path">설정 › 아이</span> 에서 나이를 한 단계 낮춰 주세요.
+           만 3–4세 문제는 <b>글자를 몰라도</b> 그림과 숫자만으로 풀 수 있게 만들었습니다.</p>
+        <p><span class="path">설정 › 문제 종류</span> 에서 아직 이른 영역(예: 영어)을 꺼 두셔도 됩니다.</p>
+        <p>오답에는 벌이 없어요. 다시 고르면 되고, 두 번 틀리면 정답이 은은하게 빛납니다.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>별은 무엇이고, 건너뛰기는 어떻게 하나요?</summary>
+      <div class="body">
+        <p>퀴즈를 통과하면 별이 쌓입니다. 모은 별을 써서 퀴즈를 한 번 건너뛸 수 있어요.</p>
+        <p>건너뛰기에 드는 별은 <span class="path">설정 › 별로 건너뛰기</span> 에서 정합니다.
+           <b>「사용 안 함」</b>을 고르면 건너뛰기 자체가 사라집니다.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>아이가 앱을 지우거나 꺼 버리면요?</summary>
+      <div class="body">
+        <p>지켜보기를 끄려면 <b>잠금 번호</b>가 필요합니다. 번호를 모르면 끌 수 없어요.</p>
+        <p>앱 자체를 지우는 것까지는 막지 못합니다.
+           아이폰 <b>설정 › 스크린 타임 › 콘텐츠 및 개인 정보 보호 제한 › 앱 삭제 허용 안 함</b>을
+           함께 켜 두시면 지우지 못하게 할 수 있어요.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>아이 기록은 어디에 저장되나요?</summary>
+      <div class="body">
+        <p><b>휴대폰 안에만</b> 저장됩니다. 현재 버전은 계정도 서버도 쓰지 않습니다.</p>
+        <p>잠글 앱을 고를 때도 앱은 <b>어떤 앱을 고르셨는지 알지 못합니다.</b>
+           애플이 건네주는 식별 불가능한 표식만 다루기 때문이에요.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>기기를 바꾸면 기록이 옮겨지나요?</summary>
+      <div class="body">
+        <p>아니요. 계정이 없어서 기기 사이로 옮겨지지 않습니다.
+           새 기기에서는 처음부터 설정하시면 됩니다.</p>
+      </div>
+    </details>
+
+  </div>
+
+  <h2>문의</h2>
+  <div class="contact">
+    <p style="margin:0">막히는 부분이나 이런 기능이 있으면 좋겠다는 의견</p>
+    <a class="mail" href="mailto:choii951202@gmail.com">choii951202@gmail.com</a>
+    <p class="sub">보통 2~3일 안에 답장드립니다.</p>
+  </div>
+
+  <div class="safe">
+    <span class="ic" aria-hidden="true">🔒</span>
+    <p><b>아이 기록은 휴대폰 안에만 있습니다.</b> 계정을 만들지 않고 서버로 보내지 않습니다.
+       어떤 앱을 잠갔는지도 앱은 알지 못합니다.</p>
+  </div>
+
+  <footer>
+    퀴즈락 · iPhone 전용 · 무료<br>
+    <a href="https://claude.ai/artifact/TH2YpgZX71Ebkacdk8WpDj">개인정보처리방침</a>
+  </footer>
+</div>
