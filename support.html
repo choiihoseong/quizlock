@@ -109,6 +109,17 @@
   }
   .contact .sub { font-size:14.5px; color:var(--ink-2); margin:8px 0 0; }
 
+  /* 아이폰과 안드로이드는 필요한 권한도, 잠금 화면 모양도 다르다.
+     한 문서에 담되 어느 쪽 이야기인지 한눈에 갈리게 한다. */
+  .plat { display:grid; gap:8px; margin:6px 0 0; }
+  @media (min-width:560px){ .plat { grid-template-columns:1fr 1fr; } }
+  .plat > div { border:1px solid var(--line); border-radius:12px; padding:11px 13px; background:var(--card-2); }
+  .plat h4 {
+    margin:0 0 5px; font-size:13px; font-weight:700; letter-spacing:.02em;
+    display:flex; align-items:center; gap:6px; color:var(--grape);
+  }
+  .plat p { margin:0; font-size:14.5px; color:var(--ink-2); }
+  .plat p + p { margin-top:5px; }
   .safe {
     display:flex; gap:12px; align-items:flex-start;
     background:var(--mint-soft); border-radius:var(--r); padding:16px 18px; margin-top:18px;
@@ -148,8 +159,20 @@
   <h2>처음 설정하기</h2>
   <ol class="steps">
     <li>
-      <b>권한 세 가지를 허용해 주세요</b>
-      <span>알림 · 실시간 현황 · 스크린 타임. 특히 <b>스크린 타임 권한</b>이 없으면 퀴즈가 뜨지 않아요.</span>
+      <b>권한을 허용해 주세요</b>
+      <span>쓰시는 기기에 따라 필요한 권한이 다릅니다.</span>
+      <div class="plat">
+        <div>
+          <h4>🍎 아이폰</h4>
+          <p>알림 · 실시간 현황 · <b>스크린 타임</b></p>
+          <p>스크린 타임 권한이 없으면 잠금이 걸리지 않아요.</p>
+        </div>
+        <div>
+          <h4>🤖 안드로이드</h4>
+          <p>알림 · <b>다른 앱 위에 표시</b> · 배터리 최적화 제외</p>
+          <p>「다른 앱 위에 표시」가 없으면 퀴즈가 올라오지 않아요.</p>
+        </div>
+      </div>
     </li>
     <li>
       <b>예외로 둘 앱을 고르세요 (선택)</b>
@@ -158,8 +181,9 @@
     </li>
     <li>
       <b>홈에서 시작하기를 누르세요</b>
-      <span>이때부터 시간을 셉니다. 시간이 되면 쓰던 화면 위로 잠금이 올라오고,
-        「퀴즈 풀러 가기」를 누르면 퀴즈가 나와요.</span>
+      <span>이때부터 시간을 셉니다. 시간이 되면 쓰던 화면 위로 잠금이 올라와요.
+        아이폰은 「퀴즈 풀러 가기」를 한 번 누르면 퀴즈가 나오고,
+        안드로이드는 곧바로 퀴즈가 뜹니다.</span>
     </li>
   </ol>
 
@@ -180,8 +204,20 @@
       <summary>시간이 지났는데 퀴즈가 안 떠요</summary>
       <div class="body">
         <p>세 가지를 차례로 확인해 주세요.</p>
-        <p><b>1. 스크린 타임 권한</b> — <span class="path">설정 › 권한</span> 에서 「허용됨」인지 봅니다.
-           아이폰 설정 › 스크린 타임에서 꺼져 있어도 동작하지 않아요.</p>
+        <p><b>1. 권한</b> — <span class="path">설정 › 권한</span> 에서 「허용됨」인지 봅니다.</p>
+        <div class="plat">
+          <div>
+            <h4>🍎 아이폰</h4>
+            <p>아이폰 <span class="path">설정 › 스크린 타임</span> 이 꺼져 있으면
+               앱에서 허용했더라도 동작하지 않아요.</p>
+          </div>
+          <div>
+            <h4>🤖 안드로이드</h4>
+            <p>「다른 앱 위에 표시」를 확인해 주세요.
+               제조사에 따라 <b>배터리 최적화</b>가 타이머를 재워 버리기도 합니다 —
+               퀴즈락을 최적화 대상에서 빼 두시면 안정적이에요.</p>
+          </div>
+        </div>
         <p><b>2. 지켜보기가 켜져 있는지</b> — 홈에서 「시작하기」를 눌러야 시간을 세기 시작합니다.</p>
         <p><b>3. 작동 시간대</b> — <span class="path">설정 › 언제까지</span> 가 지금 시각을 포함하는지 봅니다.
            기본값은 오전 8시–오후 8시예요.</p>
@@ -220,9 +256,19 @@
       <summary>아이가 앱을 지우거나 꺼 버리면요?</summary>
       <div class="body">
         <p>지켜보기를 끄려면 <b>잠금 번호</b>가 필요합니다. 번호를 모르면 끌 수 없어요.</p>
-        <p>앱 자체를 지우는 것까지는 막지 못합니다.
-           아이폰 <b>설정 › 스크린 타임 › 콘텐츠 및 개인 정보 보호 제한 › 앱 삭제 허용 안 함</b>을
-           함께 켜 두시면 지우지 못하게 할 수 있어요.</p>
+        <p>앱 자체를 지우는 것까지는 퀴즈락이 막지 못합니다. 기기 설정으로 막으실 수 있어요.</p>
+        <div class="plat">
+          <div>
+            <h4>🍎 아이폰</h4>
+            <p><span class="path">설정 › 스크린 타임 › 콘텐츠 및 개인 정보 보호 제한 › 앱 삭제 허용 안 함</span></p>
+          </div>
+          <div>
+            <h4>🤖 안드로이드</h4>
+            <p>기기·제조사마다 다르지만, 대개
+               <span class="path">설정 › 디지털 웰빙</span> 또는 Google Family Link 로
+               앱 삭제를 막을 수 있습니다.</p>
+          </div>
+        </div>
       </div>
     </details>
 
@@ -230,8 +276,10 @@
       <summary>아이 기록은 어디에 저장되나요?</summary>
       <div class="body">
         <p><b>휴대폰 안에만</b> 저장됩니다. 현재 버전은 계정도 서버도 쓰지 않습니다.</p>
-        <p>잠글 앱을 고를 때도 앱은 <b>어떤 앱을 고르셨는지 알지 못합니다.</b>
-           애플이 건네주는 식별 불가능한 표식만 다루기 때문이에요.</p>
+        <p>예외로 둘 앱을 고를 때 아이폰에서는 앱이 <b>어떤 앱을 고르셨는지 알지 못합니다</b> —
+           애플이 건네주는 식별 불가능한 표식만 다루기 때문이에요.
+           안드로이드에서는 고르신 앱의 이름을 알지만, 그 역시 <b>휴대폰 안에만</b> 남고
+           밖으로 나가지 않습니다.</p>
       </div>
     </details>
 
@@ -255,11 +303,11 @@
   <div class="safe">
     <span class="ic" aria-hidden="true">🔒</span>
     <p><b>아이 기록은 휴대폰 안에만 있습니다.</b> 계정을 만들지 않고 서버로 보내지 않습니다.
-       어떤 앱을 잠갔는지도 앱은 알지 못합니다.</p>
+       어떤 앱을 예외로 두셨는지도 휴대폰 밖으로 나가지 않습니다.</p>
   </div>
 
   <footer>
-    퀴즈락 · iPhone 전용 · 무료<br>
-    <a href="https://claude.ai/artifact/TH2YpgZX71Ebkacdk8WpDj">개인정보처리방침</a>
+    퀴즈락 · iPhone · Android · 무료<br>
+    <a href="privacy.html">개인정보처리방침</a>
   </footer>
 </div>
